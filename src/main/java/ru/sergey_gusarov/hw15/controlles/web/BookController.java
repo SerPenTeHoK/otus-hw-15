@@ -1,4 +1,4 @@
-package ru.sergey_gusarov.hw15.web.controlles.rest;
+package ru.sergey_gusarov.hw15.controlles.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +18,12 @@ import ru.sergey_gusarov.hw15.service.books.BookService;
 import java.util.List;
 
 @Controller
-public class BookRestController {
-    /*
+public class BookController {
     private final BookService bookService;
     private final AuthorService authorService;
 
     @Autowired
-    public BookControllerRest(BookService bookService, AuthorService authorService) {
+    public BookController(BookService bookService, AuthorService authorService) {
         this.bookService = bookService;
         this.authorService = authorService;
     }
@@ -103,5 +102,4 @@ public class BookRestController {
         bookService.save(bookFromDb);
         return "redirect:/book?id=" + bookFromDb.getId();
     }
-    */
 }

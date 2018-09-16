@@ -1,14 +1,23 @@
 package ru.sergey_gusarov.hw15.domain.books;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@Slf4j
 @Document(collection = "author")
 public class Author {
+
     @Id
     @Indexed
     private String id;
+
     @Indexed(unique = true)
     private String name;
 
@@ -16,22 +25,6 @@ public class Author {
     }
 
     public Author(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 

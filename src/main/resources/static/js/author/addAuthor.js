@@ -6,7 +6,6 @@ $(document).ready(function() {
     function addAuthor(){
         var formData = {
             name :  $("#name").val(),
-
         }
         $.ajax({
             type : "POST",
@@ -16,11 +15,12 @@ $(document).ready(function() {
             dataType : "json",
             success : function(result) {
                 $("#name").innerHTML = "";
-                createTableAuthors(result);
+                markupAuthorsTable(result);
                 console.log("success add author!");
             },
             error : function(e) {
                 console.log("ERROR: ", e);
+                alert('Duplicate name = ' + $("#name").val());
             }
         });
     }

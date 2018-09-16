@@ -1,4 +1,4 @@
-package ru.sergey_gusarov.hw15.web.controlles.rest;
+package ru.sergey_gusarov.hw15.controlles.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +16,10 @@ import ru.sergey_gusarov.hw15.service.books.BookService;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class AuthorRestController {
     private final AuthorService authorService;
     private final BookService bookService;
-
-    @Value("${error.message}")
-    private String errorMessage;
 
     @Autowired
     public AuthorRestController(AuthorService authorService, BookService bookService) {

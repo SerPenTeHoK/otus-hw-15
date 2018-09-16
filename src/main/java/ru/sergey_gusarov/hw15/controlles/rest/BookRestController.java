@@ -1,12 +1,9 @@
-package ru.sergey_gusarov.hw15.web.controlles;
+package ru.sergey_gusarov.hw15.controlles.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.sergey_gusarov.hw15.domain.books.Author;
 import ru.sergey_gusarov.hw15.domain.books.Book;
 import ru.sergey_gusarov.hw15.domain.books.BookComment;
@@ -17,13 +14,14 @@ import ru.sergey_gusarov.hw15.service.books.BookService;
 
 import java.util.List;
 
-@Controller
-public class BookController {
+@RestController
+public class BookRestController {
+    /*
     private final BookService bookService;
     private final AuthorService authorService;
 
     @Autowired
-    public BookController(BookService bookService, AuthorService authorService) {
+    public BookControllerRest(BookService bookService, AuthorService authorService) {
         this.bookService = bookService;
         this.authorService = authorService;
     }
@@ -102,4 +100,5 @@ public class BookController {
         bookService.save(bookFromDb);
         return "redirect:/book?id=" + bookFromDb.getId();
     }
+    */
 }

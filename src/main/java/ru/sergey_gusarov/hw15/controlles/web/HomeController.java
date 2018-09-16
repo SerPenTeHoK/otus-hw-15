@@ -1,4 +1,4 @@
-package ru.sergey_gusarov.hw15.web.controlles;
+package ru.sergey_gusarov.hw15.controlles.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

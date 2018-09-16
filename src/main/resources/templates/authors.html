@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all authors</title>
+    <link rel="stylesheet" type="text/css" th:href="style.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var authors = /*[[${authors}]]*/ 'default';
+        /*]]>*/
+    </script>
+    <script src="js/author/authorsTable.js"></script>
+    <script src="js/author/addAuthor.js"></script>
+    <script src="js/author/deleteAuthor.js"></script>
+</head>
+<body>
+    <h1>Authors:</h1>
+    <a href="/">Return to main page</a>
+    <div>
+        <form id="addAuthor">
+            <p>Author name: <input type="text" id="name" /></p>
+            <p><input type="submit" value="Add author"/></p>
+        </form>
+    </div>
+    <div id="authorsTableDiv" class="blueTable">
+        <script>
+            markupAuthorsTable();
+        </script>
+    </div>
+</body>
+</html>
