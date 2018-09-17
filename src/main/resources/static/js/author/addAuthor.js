@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#addAuthor").submit(function (event) {
+    $("#addAuthorForm").submit(function (event) {
         event.preventDefault();
         addAuthor();
     });

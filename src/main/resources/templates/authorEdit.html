@@ -6,33 +6,28 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{style.css}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script th:inline="javascript">
-        /*<![CDATA[*/
-        var authors = /*[[${authors}]]*/ 'default';
-        /*]]>*/
-    </script>
-    <script src="js/author/addAuthor.js"></script>
+    <script src="js/author/editAuthor.js"></script>
 
 </head>
 <body>
 
 <a href="authors">Show list of authors</a>
 <!-- Author edition -->
-<form id="edit-form" th:action="@{/author(id=${author.id})}" th:method="post" action="authorEdit.html">
+<form th:object="${author}" id="editAuthorForm">
     <h1>Author Info:</h1>
 
     <div class="row">
-        <label for="id-input">ID:</label>
-        <input id="id-input" type="text" readonly="readonly" th:value="${author.id}" value="1"/>
+        <label for="id">ID:</label>
+        <input id="id" type="text" readonly="readonly" th:value="${author.id}" value="1"/>
     </div>
 
     <div class="row">
-        <label for="holder-input">Name:</label>
-        <input id="holder-input" name="name" type="text" th:value="${author.name}" value="Author1"/>
+        <label for="name">Name:</label>
+        <input id="name" type="text" th:field="*{name}"  value="Author1"/>
     </div>
 
     <div class="row">
-        <button type="submit">Save</button>
+        <button type="submit" value="Edit author" class="editAuthor">Edit</button>
     </div>
 </form>
 

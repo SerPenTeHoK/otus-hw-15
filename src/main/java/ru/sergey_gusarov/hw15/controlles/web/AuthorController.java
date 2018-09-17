@@ -60,6 +60,7 @@ public class AuthorController {
         return "authorEdit";
     }
 
+
     @RequestMapping(value = "/author", method = RequestMethod.POST)
     public String editAuthor(@ModelAttribute Author author, Model model) {
         if (author.getName().isEmpty()) {

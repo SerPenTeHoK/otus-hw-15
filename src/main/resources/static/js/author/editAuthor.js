@@ -6,7 +6,7 @@ $(document).ready(function() {
     function editAuthor(){
         var formData = {
             id : $("#id").val(),
-            name : $("#name").val()
+            name : $("#name").val(),
         }
         $.ajax({
             type : "PUT",

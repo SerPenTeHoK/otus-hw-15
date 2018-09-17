@@ -1,10 +1,11 @@
 package ru.sergey_gusarov.hw15.controlles.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,10 +29,11 @@ public class AuthorRestController {
     }
 
     @PostMapping("/addAuthor")
+    @ResponseStatus(HttpStatus.CREATED)
     public List<Author> addAuthor(@RequestBody Author author){
         authorService.save(author);
         return authorService.findAll();
-    }
+    }Q-WE34
 
     @DeleteMapping("/deleteAuthor/{authorId}")
     public List<Author> deleteAuthor(@PathVariable String authorId){
