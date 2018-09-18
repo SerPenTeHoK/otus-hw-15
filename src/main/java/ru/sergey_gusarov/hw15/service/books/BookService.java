@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface BookService {
     long count();
 
+    Optional<Book> getById(String id);
+
     Optional<Book> findById(String id);
 
     List<Book> findByTitle(String title);

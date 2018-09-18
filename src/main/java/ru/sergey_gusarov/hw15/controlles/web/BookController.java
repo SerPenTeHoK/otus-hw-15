@@ -32,7 +32,7 @@ public class BookController {
     public String listBookPage(Model model) {
         List<Book> books = bookService.findAll();
         model.addAttribute("books", books);
-        return "booksList";
+        return "books";
     }
 
     @RequestMapping("/newBook")

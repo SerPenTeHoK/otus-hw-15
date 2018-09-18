@@ -39,20 +39,13 @@ function markupAuthorsTable(authorData){
         var idAuthorText = document.createTextNode(rowData["id"]);
         tdId.appendChild(idAuthorText);
 
-        /*
-        var linkId = document.createElement("a");
-        linkId.href = "/author?id="+ rowData["id"];
-        var linkIdText = document.createTextNode(rowData["id"]);
-        linkId.appendChild(linkIdText);
-        tdId.appendChild(linkId);
-        */
         // Name
         var tdName = document.createElement("td");
         tdName.innerHTML = rowData["name"];
 
         // Edit
         var tdEdit = document.createElement("td");
-        tdEdit.setAttribute("Edit", "idEditLink");
+        tdEdit.setAttribute("Edit", "LinkEditById");
         var linkEdit = document.createElement("a");
         linkEdit.href = "/author?id="+ rowData["id"];
         var linkEditText = document.createTextNode("edit");
