@@ -1,5 +1,8 @@
 package ru.sergey_gusarov.hw15.domain.books;
 
+import lombok.Data;
+
+@Data
 public class Genre {
     private String name;
 
@@ -7,14 +10,6 @@ public class Genre {
     }
 
     public Genre(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 

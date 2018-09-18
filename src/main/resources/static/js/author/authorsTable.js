@@ -2,9 +2,13 @@ function markupAuthorsTable(authorData){
     if(authorData){
         var authorsTableData = authorData;
         var authorsTable = document.getElementById("authorsTable");
-        authorsTable. parentNode.removeChild(authorsTable);
+        authorsTable.parentNode.removeChild(authorsTable);
+        var authorsTableWrapper = document.getElementById("authorsTable_wrapper");
+        authorsTableWrapper.parentNode.removeChild(authorsTableWrapper);
+
     }else {
         var authorsTableData = window.authors;
+
     }
     var authorsTableDiv = document.getElementById("authorsTableDiv");
 
@@ -71,4 +75,13 @@ function markupAuthorsTable(authorData){
 
     table.appendChild(tableBody);
     authorsTableDiv.appendChild(table);
+
+    //window.$ = window.jquery = require('./node_modules/jquery');
+    //window.dt = require('./node_modules/datatables.net')();
+
+
+    //table.DataTable();
+
+    window.$('#authorsTable').DataTable();
+
 }

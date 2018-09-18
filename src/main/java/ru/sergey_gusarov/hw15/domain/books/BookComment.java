@@ -1,5 +1,8 @@
 package ru.sergey_gusarov.hw15.domain.books;
 
+import lombok.Data;
+
+@Data
 public class BookComment {
     private String text;
 
@@ -8,14 +11,6 @@ public class BookComment {
     }
 
     public BookComment() {
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
     @Override
