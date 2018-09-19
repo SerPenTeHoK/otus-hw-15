@@ -3,6 +3,8 @@ function markupBooksTable(bookData){
         var booksTableData = bookData;
         var booksTable = document.getElementById("booksTable");
         booksTable. parentNode.removeChild(booksTable);
+        var booksTableWrapper = document.getElementById("booksTable_wrapper");
+        booksTableWrapper.parentNode.removeChild(booksTableWrapper);
     }else {
         var booksTableData = window.books;
     }
@@ -69,4 +71,6 @@ function markupBooksTable(bookData){
 
     table.appendChild(tableBody);
     booksTableDiv.appendChild(table);
+
+    window.$('#booksTable').DataTable();
 }

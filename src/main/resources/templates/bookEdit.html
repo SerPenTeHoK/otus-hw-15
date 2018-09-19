@@ -4,6 +4,15 @@
     <meta charset="UTF-8"/>
     <title>Edit book</title>
     <link rel="stylesheet" type="text/css" th:href="style.css"/>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var genres = /*[[${book.genres}]]*/ 'default';
+        var book = /*[[${book}]]*/ 'default';
+        /*]]>*/
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/book/elements/genres/deleteGenreFromBook.js"></script>
+    <script src="js/book/elements/genres/genresTable.js"></script>
 </head>
 <body>
 
@@ -22,8 +31,16 @@
         <input id="holder-input" name="title" type="text" th:value="${book.title}" value="Book1"/>
     </div>
 
+    <div id="genresDiv">
+        <fieldset id="genresFieldset">
+            <script>
+                markupGenreTable();
+            </script>
+        </fieldset>
+    </div>
+
     <h2>Genres</h2>
-    <div id="divGenres">
+    <div id="divGenresOld">
         <fieldset>
             <table align="left" width="50%" class="blueTable">
                 <tr>

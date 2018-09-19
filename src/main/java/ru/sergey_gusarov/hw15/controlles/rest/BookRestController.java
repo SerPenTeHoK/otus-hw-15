@@ -13,6 +13,7 @@ import ru.sergey_gusarov.hw15.exception.NotFoundException;
 import ru.sergey_gusarov.hw15.service.books.AuthorService;
 import ru.sergey_gusarov.hw15.service.books.BookService;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -45,4 +46,17 @@ public class BookRestController {
         bookService.save(bookFromDb);
         return bookService.getById(bookFromDb.getId()).orElseThrow(NotFoundException::new);
     }
+
+    @DeleteMapping("/deleteGenreFromBook/{bookId}")
+    public List<Genre> deleteBook(@PathVariable String bookId, @RequestBody HashMap requesBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        Genre genreForDel = bookFromDb.getGenres().stream()
+                .filter(p -> p.getName().equals(requesBody.get("genreName")))
+                .findFirst().get();
+        bookFromDb.getGenres().remove(genreForDel);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getGenres();
+    }
+
 }
