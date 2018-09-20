@@ -1,16 +1,15 @@
 package ru.sergey_gusarov.hw15.domain.books;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class BookComment {
     private String text;
 
     public BookComment(String text) {
         this.text = text;
-    }
-
-    public BookComment() {
     }
 
     @Override

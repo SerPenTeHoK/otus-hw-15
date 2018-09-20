@@ -1,6 +1,7 @@
 package ru.sergey_gusarov.hw15.domain.books;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "book")
 public class Book {
     @Id
@@ -18,13 +20,10 @@ public class Book {
     @Indexed
     private String title;
     private List<Genre> genres = new ArrayList<>();
-    // А как вы предпочитаете? set или list - по логике должен быть set, но удобней работать с list.
+
     @DBRef
     private List<Author> authors = new ArrayList<>();
     private List<BookComment> bookComments = new ArrayList<>();
-
-    public Book() {
-    }
 
     public Book(String title) {
         this.title = title;

@@ -1,9 +1,6 @@
 package ru.sergey_gusarov.hw15.controlles.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.sergey_gusarov.hw15.domain.books.Author;
 import ru.sergey_gusarov.hw15.domain.books.Book;
@@ -48,10 +45,10 @@ public class BookRestController {
     }
 
     @DeleteMapping("/deleteGenreFromBook/{bookId}")
-    public List<Genre> deleteBook(@PathVariable String bookId, @RequestBody HashMap requesBody) {
+    public List<Genre> deleteBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
         Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
         Genre genreForDel = bookFromDb.getGenres().stream()
-                .filter(p -> p.getName().equals(requesBody.get("genreName")))
+                .filter(p -> p.getName().equals(requestBody.get("genreName")))
                 .findFirst().get();
         bookFromDb.getGenres().remove(genreForDel);
         bookService.save(bookFromDb);
@@ -59,4 +56,27 @@ public class BookRestController {
         return bookFromUpdateDb.getGenres();
     }
 
+    @DeleteMapping("/deleteCommentFromBook/{bookId}")
+    public List<BookComment> deleteComment(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        BookComment commentForDel = bookFromDb.getBookComments().stream()
+                .filter(p -> p.getText().equals(requestBody.get("commentText")))
+                .findFirst().get();
+        bookFromDb.getBookComments().remove(commentForDel);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getBookComments();
+    }
+
+    @DeleteMapping("/deleteAuthorFromBook/{bookId}")
+    public List<Author> deleteAuthor(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        Author authorForDel = bookFromDb.getAuthors().stream()
+                .filter(p -> p.getId().equals(requestBody.get("authorId")))
+                .findFirst().get();
+        bookFromDb.getAuthors().remove(authorForDel);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getAuthors();
+    }
 }

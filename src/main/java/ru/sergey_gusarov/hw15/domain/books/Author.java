@@ -2,6 +2,7 @@ package ru.sergey_gusarov.hw15.domain.books;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "author")
 public class Author {
 
@@ -19,9 +21,6 @@ public class Author {
 
     @Indexed(unique = true)
     private String name;
-
-    public Author() {
-    }
 
     public Author(String name) {
         this.name = name;

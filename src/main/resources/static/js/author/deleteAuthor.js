@@ -1,11 +1,11 @@
- function deleteAuthor(idDeleteAuthor){
+ function deleteAuthor(authorId){
         var formData = {
-            id: idDeleteAuthor
+            id: authorId
         }
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "/deleteAuthor/" + idDeleteAuthor,
+            url : "/deleteAuthor/" + authorId,
             data : JSON.stringify(formData),
             dataType : "json",
             success : function(result) {

@@ -6,13 +6,19 @@
     <link rel="stylesheet" type="text/css" th:href="style.css"/>
     <script th:inline="javascript">
         /*<![CDATA[*/
-        var genres = /*[[${book.genres}]]*/ 'default';
         var book = /*[[${book}]]*/ 'default';
+        var genres = /*[[${book.genres}]]*/ 'default';
+        var comments = /*[[${book.bookComments}]]*/ 'default';
+        var authors = /*[[${book.authors}]]*/ 'default';
         /*]]>*/
     </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/book/elements/genres/deleteGenreFromBook.js"></script>
     <script src="js/book/elements/genres/genresTable.js"></script>
+    <script src="js/book/elements/comments/deleteCommentFromBook.js"></script>
+    <script src="js/book/elements/comments/comentsTable.js"></script>
+    <script src="js/book/elements/authors/deleteAuthorFromBook.js"></script>
+    <script src="js/book/elements/authors/authorsTable.js"></script>
 </head>
 <body>
 
@@ -29,6 +35,10 @@
     <div class="row">
         <label for="holder-input">Title:</label>
         <input id="holder-input" name="title" type="text" th:value="${book.title}" value="Book1"/>
+    </div>
+
+    <div class="row">
+        <button type="submit" value="Edit book" class="editBook">Edit</button>
     </div>
 
     <div id="genresDiv">
@@ -57,8 +67,14 @@
 
     <a th:href="@{/newGenreForBook(id=${book.id})}" href="bookEdit.html">Add genre</a>
 
+    <h2>Authors</h2>
+    <div id="authorsTableDiv">
+        <script>
+            markupAuthorsTableForBook();
+        </script>
+    </div>
 
-    <div id="divAuthors" class=primer>
+    <div id="divAuthorsOld" class=primer>
         <h2>Authors</h2>
         <fieldset>
             <table align="left" width="50%" class="blueTable">
@@ -79,7 +95,15 @@
     <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add author</a>
 
     <h2>Comments</h2>
-    <div id="divComments">
+    <div id="commentsDiv">
+        <fieldset id="commentsFieldset">
+            <script>
+                markupCommentTable();
+            </script>
+        </fieldset>
+    </div>
+
+    <div id="divCommentsOld">
         <fieldset>
             <table align="left" width="50%" class="blueTable">
                 <tr>
@@ -95,9 +119,7 @@
     </div>
     <a th:href="@{/newCommentForBook(id=${book.id})}" href="bookEdit.html">Add comment</a>
 
-    <div class="row">
-        <button type="submit" value="Edit book" class="editBook">Edit</button>
-    </div>
+
 </form>
 
 </body>
