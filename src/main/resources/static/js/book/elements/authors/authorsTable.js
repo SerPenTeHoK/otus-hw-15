@@ -47,15 +47,6 @@ function markupAuthorsTableForBook(authorData){
         var tdName = document.createElement("td");
         tdName.innerHTML = rowData["name"];
 
-        // Edit
-        var tdEdit = document.createElement("td");
-        tdEdit.setAttribute("Edit", "LinkEditById");
-        var linkEdit = document.createElement("a");
-        linkEdit.href = "/author?id="+ rowData["id"];
-        var linkEditText = document.createTextNode("edit");
-        linkEdit.appendChild(linkEditText);
-        tdEdit.appendChild(linkEdit);
-
         // Delete
         var tdButtonDelete = document.createElement("td");
         var buttonDelete = document.createElement("BUTTON");
