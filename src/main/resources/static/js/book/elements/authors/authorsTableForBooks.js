@@ -22,14 +22,11 @@ function markupAuthorsTableForBook(authorData){
     thIdAuthor.innerHTML = "Author id";
     var thName = document.createElement("th");
     thName.innerHTML = "Author name";
-    var thEditAuthor = document.createElement("th");
-    thEditAuthor.innerHTML = "Action edit";
     var thDeleteAuthor = document.createElement("th");
     thDeleteAuthor.innerHTML = "Action delete";
 
     trHead.appendChild(thIdAuthor);
     trHead.appendChild(thName);
-    trHead.appendChild(thEditAuthor);
     trHead.appendChild(thDeleteAuthor);
     thead.appendChild(trHead);
     table.appendChild(thead);
@@ -59,7 +56,6 @@ function markupAuthorsTableForBook(authorData){
 
         tr.appendChild(tdId);
         tr.appendChild(tdName);
-        tr.appendChild(tdEdit);
         tr.appendChild(tdButtonDelete);
         tableBody.appendChild(tr);
     });

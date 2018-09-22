@@ -45,6 +45,7 @@ public class BookController {
     public String bookPage(@RequestParam("id") String id, Model model) {
         Book book = bookService.findById(id).orElseThrow(NotFoundException::new);
         model.addAttribute("book", book);
+        model.addAttribute("authors", authorService.findAll());
         return "bookEdit";
     }
 

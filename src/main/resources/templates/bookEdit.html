@@ -10,15 +10,22 @@
         var genres = /*[[${book.genres}]]*/ 'default';
         var comments = /*[[${book.bookComments}]]*/ 'default';
         var authors = /*[[${book.authors}]]*/ 'default';
+        var allAuthors = /*[[${authors}]]*/ 'default';
         /*]]>*/
     </script>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/book/elements/genres/deleteGenreFromBook.js"></script>
     <script src="js/book/elements/genres/genresTable.js"></script>
+    <script src="js/book/elements/genres/addGenres.js"></script>
     <script src="js/book/elements/comments/deleteCommentFromBook.js"></script>
-    <script src="js/book/elements/comments/comentsTable.js"></script>
+    <script src="js/book/elements/comments/commentsTable.js"></script>
+    <script src="js/book/elements/comments/addComment.js"></script>
     <script src="js/book/elements/authors/deleteAuthorFromBook.js"></script>
-    <script src="js/book/elements/authors/authorsTable.js"></script>
+    <script src="js/book/elements/authors/authorsTableForBooks.js"></script>
+    <script src="js/book/elements/authors/addAuthorToBook.js"></script>
+    <script src="js/book/elements/authors/authorSelector.js"></script>
+
 </head>
 <body>
 
@@ -41,6 +48,7 @@
         <button type="submit" value="Edit book" class="editBook">Edit</button>
     </div>
 
+    <h2>Genres</h2>
     <div id="genresDiv">
         <fieldset id="genresFieldset">
             <script>
@@ -49,20 +57,11 @@
         </fieldset>
     </div>
 
-    <h2>Genres</h2>
-    <div id="divGenresOld">
-        <fieldset>
-            <table align="left" width="50%" class="blueTable">
-                <tr>
-                    <th>Genre</th>
-                    <th>Action</th>
-                </tr>
-                <tr th:each="genre, itemStat : ${book.genres}">
-                    <td><input type="text" th:field="${book.genres[__${itemStat.index}__].name}"/></td>
-                    <td width="5%"><a th:href="@{/delGenreForBook(id=${book.id}, genreNum=${__${itemStat.index}__})}" href="bookEdit.html">Del</a><td>
-                </tr>
-            </table>
-        </fieldset>
+    <div>
+        <form id="addGenreForm">
+            <p>Genre name: <input type="text" id="name"/></p>
+            <p><input type="submit" value="Add genre"/></p>
+        </form>
     </div>
 
     <a th:href="@{/newGenreForBook(id=${book.id})}" href="bookEdit.html">Add genre</a>
@@ -73,26 +72,20 @@
             markupAuthorsTableForBook();
         </script>
     </div>
+    <form id="addAuthorForm">
+    <fieldset>
+        <legend>Choice author</legend>
+        <div id="comboBoxAuthorDiv">
+            <script>
+                markupAuthorSelectorForBook();
+            </script>
+        </div>
 
-    <div id="divAuthorsOld" class=primer>
-        <h2>Authors</h2>
-        <fieldset>
-            <table align="left" width="50%" class="blueTable">
-                <tr>
-                    <th>Author id</th>
-                    <th>Author name</th>
-                    <th>Action</th>
-                </tr>
-                <tr th:each="author, itemStat : ${book.authors}">
-                    <td><input type="text" readonly="readonly" th:field="${book.authors[__${itemStat.index}__].id}"/></td>
-                    <td><input type="text" readonly="readonly" th:field="${book.authors[__${itemStat.index}__].name}"/></td>
-                    <td width="5%"><a th:href="@{/delAuthorFromBook(id=${book.id},authorId=${book.authors[__${itemStat.index}__].id})}" href="bookEdit.html">Del</a><td>
-                </tr>
-            </table>
-        </fieldset>
-    </div>
+        <input type="button" value="Add selected author">
+    </fieldset>
+    </form>
 
-    <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add author</a>
+    <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add new author to all authors list</a>
 
     <h2>Comments</h2>
     <div id="commentsDiv">
@@ -103,23 +96,14 @@
         </fieldset>
     </div>
 
-    <div id="divCommentsOld">
-        <fieldset>
-            <table align="left" width="50%" class="blueTable">
-                <tr>
-                    <th>Comment</th>
-                    <th>Action</th>
-                </tr>
-                <tr th:each="comment, itemStat : ${book.bookComments}">
-                    <td><input type="text" th:field="${book.bookComments[__${itemStat.index}__].text}"/></td>
-                    <td width="5%"><a th:href="@{/delCommentForBook(id=${book.id}, commentNum=${__${itemStat.index}__})}" href="bookEdit.html">Del</a><td>
-                </tr>
-            </table>
-        </fieldset>
+    <div>
+        <form id="addCommentForm">
+            <p>Genre name: <input type="text" id="text"/></p>
+            <p><input type="submit" value="Add comment"/></p>
+        </form>
     </div>
+
     <a th:href="@{/newCommentForBook(id=${book.id})}" href="bookEdit.html">Add comment</a>
-
-
 </form>
 
 </body>

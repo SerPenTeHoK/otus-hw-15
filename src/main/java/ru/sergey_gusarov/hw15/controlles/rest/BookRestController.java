@@ -45,7 +45,7 @@ public class BookRestController {
     }
 
     @DeleteMapping("/deleteGenreFromBook/{bookId}")
-    public List<Genre> deleteBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+    public List<Genre> deleteGenre(@PathVariable String bookId, @RequestBody HashMap requestBody) {
         Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
         Genre genreForDel = bookFromDb.getGenres().stream()
                 .filter(p -> p.getName().equals(requestBody.get("genreName")))
@@ -78,5 +78,38 @@ public class BookRestController {
         bookService.save(bookFromDb);
         Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
         return bookFromUpdateDb.getAuthors();
+    }
+
+
+    @PostMapping("/addGenreToBook/{bookId}")
+    public List<Genre> addGenreToBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        Genre genre = new Genre();
+        genre.setName(requestBody.get("name").toString());
+        bookFromDb.getGenres().add(genre);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getGenres();
+    }
+
+    @PostMapping("/addCommentToBook/{bookId}")
+    public List<BookComment> addCommentToBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        BookComment bookComment = new BookComment();
+        bookComment.setText(requestBody.get("text").toString());
+        bookFromDb.getBookComments().add(bookComment);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getBookComments();
+    }
+
+    @PostMapping("/addAuthorToBook/{bookId}")
+    public List<BookComment> addAuthorToBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+        Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        Author author = authorService.findByName(requestBody.get("name").toString()).orElseThrow(NotFoundException::new);
+        bookFromDb.getAuthors().add(author);
+        bookService.save(bookFromDb);
+        Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
+        return bookFromUpdateDb.getBookComments();
     }
 }

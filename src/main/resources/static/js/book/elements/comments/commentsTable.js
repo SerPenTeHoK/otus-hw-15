@@ -23,11 +23,18 @@ function markupCommentTable(commentData){
     trHead.appendChild(thCommentName);
     trHead.appendChild(thDeleteComment);
 
+    var i = 0;
     commentsTableData.forEach(function(rowData) {
         var trBody = document.createElement("tr");
-        // Name
-        var tdName = document.createElement("td");
-        tdName.innerHTML = rowData["text"];
+        // Text
+        var tdCommentText = document.createElement("td");
+        var inputCommentText = document.createElement("input");
+        inputCommentText.setAttribute("type", "text");
+        inputCommentText.setAttribute("id", "bookComments"+i+".text");
+        inputCommentText.setAttribute("name", "bookComments["+i+"].text");
+        inputCommentText.setAttribute("value", rowData["text"]);
+        i = i + 1;
+        tdCommentText.appendChild(inputCommentText);
         // Delete
         var tdButtonDelete = document.createElement("td");
         var buttonDelete = document.createElement("BUTTON");
@@ -38,7 +45,7 @@ function markupCommentTable(commentData){
         };
         tdButtonDelete.appendChild(buttonDelete);
 
-        trBody.appendChild(tdName);
+        trBody.appendChild(tdCommentText);
         trBody.appendChild(tdButtonDelete);
 
         table.appendChild(trBody);
