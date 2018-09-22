@@ -15,6 +15,7 @@
     </script>
 
     <script src="js/jquery.min.js"></script>
+    <script src="js/book/elements/editBook.js"></script>
     <script src="js/book/elements/genres/deleteGenreFromBook.js"></script>
     <script src="js/book/elements/genres/genresTable.js"></script>
     <script src="js/book/elements/genres/addGenres.js"></script>
@@ -31,22 +32,23 @@
 
 <a href="books">Show list of books</a>
 <!-- Book edition -->
-<form id="edit-form" th:action="@{/book(id=${book.id})}" th:method="post" action="bookEdit.html">
+<form id="editBookForm" >
     <h1>Book Info:</h1>
 
     <div class="row">
-        <label for="id-input">ID:</label>
-        <input id="id-input" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
+        <label for="bookid">ID:</label>
+        <input id="bookid"  name="bookid" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
     </div>
 
     <div class="row">
-        <label for="holder-input">Title:</label>
-        <input id="holder-input" name="title" type="text" th:value="${book.title}" value="Book1"/>
+        <label for="booktitle">Title:</label>
+        <input id="booktitle" name="booktitle" type="text" th:value="${book.title}" value="Book1"/>
     </div>
 
     <div class="row">
         <button type="submit" value="Edit book" class="editBook">Edit</button>
     </div>
+</form>
 
     <h2>Genres</h2>
     <div id="genresDiv">
@@ -56,7 +58,6 @@
             </script>
         </fieldset>
     </div>
-
     <div>
         <form id="addGenreForm">
             <p>Genre name: <input type="text" id="name"/></p>
@@ -72,9 +73,9 @@
             markupAuthorsTableForBook();
         </script>
     </div>
+    <div>
     <form id="addAuthorForm">
-    <fieldset>
-        <legend>Choice author</legend>
+         <legend>Choice author</legend>
         <div id="comboBoxAuthorDiv">
             <script>
                 markupAuthorSelectorForBook();
@@ -82,8 +83,8 @@
         </div>
 
         <input type="button" value="Add selected author">
-    </fieldset>
     </form>
+    </div>
 
     <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add new author to all authors list</a>
 
@@ -98,7 +99,7 @@
 
     <div>
         <form id="addCommentForm">
-            <p>Genre name: <input type="text" id="text"/></p>
+            <p>Comment text: <input type="text" id="text"/></p>
             <p><input type="submit" value="Add comment"/></p>
         </form>
     </div>

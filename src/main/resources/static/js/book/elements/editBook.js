@@ -5,8 +5,8 @@ $(document).ready(function() {
     });
     function editBook(){
         var formData = {
-            id : $("#id").val(),
-            name : $("#title").val(),
+            id : $("#bookid").val(),
+            title : $("#booktitle").val(),
         }
         $.ajax({
             type : "PUT",

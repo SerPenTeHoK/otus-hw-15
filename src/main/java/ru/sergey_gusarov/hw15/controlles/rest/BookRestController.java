@@ -37,7 +37,7 @@ public class BookRestController {
     }
 
     @PutMapping("/editBook")
-    public Book editBook(@RequestBody Book book) {
+    public Book editBook( @RequestBody Book book) {
         Book bookFromDb = bookService.getById(book.getId()).orElseThrow(NotFoundException::new);
         bookFromDb.setTitle(book.getTitle());
         bookService.save(bookFromDb);
