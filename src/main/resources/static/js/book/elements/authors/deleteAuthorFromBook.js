@@ -13,7 +13,7 @@ function deleteAuthorFromBook(authorId){
         dataType : "json",
         success : function(result) {
             console.log(result);
-            markupAuthorTable(result);
+            markupAuthorsTableForBook(result);
         },
         error : function(e) {
             console.log("ERROR: ", e);

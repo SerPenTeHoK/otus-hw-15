@@ -36,13 +36,13 @@
     <h1>Book Info:</h1>
 
     <div class="row">
-        <label for="bookid">ID:</label>
-        <input id="bookid"  name="bookid" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
+        <label for="book-id">ID:</label>
+        <input id="book-id"  name="book-id" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
     </div>
 
     <div class="row">
-        <label for="booktitle">Title:</label>
-        <input id="booktitle" name="booktitle" type="text" th:value="${book.title}" value="Book1"/>
+        <label for="book-title">Title:</label>
+        <input id="book-title" name="book-title" type="text" th:value="${book.title}" value="Book1"/>
     </div>
 
     <div class="row">
@@ -65,8 +65,6 @@
         </form>
     </div>
 
-    <a th:href="@{/newGenreForBook(id=${book.id})}" href="bookEdit.html">Add genre</a>
-
     <h2>Authors</h2>
     <div id="authorsTableDiv">
         <script>
@@ -81,8 +79,7 @@
                 markupAuthorSelectorForBook();
             </script>
         </div>
-
-        <input type="button" value="Add selected author">
+        <button type="submit" value="Add selected author" class="addAuthorInBook">Add selected author</button>
     </form>
     </div>
 
@@ -103,9 +100,6 @@
             <p><input type="submit" value="Add comment"/></p>
         </form>
     </div>
-
-    <a th:href="@{/newCommentForBook(id=${book.id})}" href="bookEdit.html">Add comment</a>
-</form>
 
 </body>
 </html>

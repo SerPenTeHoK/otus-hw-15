@@ -1,11 +1,8 @@
 function markupAuthorsTableForBook(authorData){
-
     if(authorData){
         var authorsTableData = authorData;
         var authorsTable = document.getElementById("authorsTable");
         authorsTable.parentNode.removeChild(authorsTable);
-        var authorsTableWrapper = document.getElementById("authorsTable_wrapper");
-        authorsTableWrapper.parentNode.removeChild(authorsTableWrapper);
     }else {
         var authorsTableData = window.authors;
 

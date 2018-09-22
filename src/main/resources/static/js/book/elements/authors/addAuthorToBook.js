@@ -5,7 +5,7 @@ $(document).ready(function() {
     });
     function addAuthorToBook(){
         var formData = {
-            name :  "aaa",
+            id :  $("#comboBoxAuthor").val(),
         }
         $.ajax({
             type : "POST",
@@ -14,12 +14,11 @@ $(document).ready(function() {
             contentType : "application/json; charset=utf-8",
             dataType : "json",
             success : function(result) {
-                markupCommentTable(result);
+                markupAuthorsTableForBook(result);
                 console.log("success add author!");
             },
             error : function(e) {
                 console.log("ERROR: ", e);
-                alert("ERROR: "+ e);
             }
         });
     }

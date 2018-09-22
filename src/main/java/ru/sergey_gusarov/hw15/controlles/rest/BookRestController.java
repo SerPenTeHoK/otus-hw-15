@@ -104,12 +104,12 @@ public class BookRestController {
     }
 
     @PostMapping("/addAuthorToBook/{bookId}")
-    public List<BookComment> addAuthorToBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
+    public List<Author> addAuthorToBook(@PathVariable String bookId, @RequestBody HashMap requestBody) {
         Book bookFromDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
-        Author author = authorService.findByName(requestBody.get("name").toString()).orElseThrow(NotFoundException::new);
+        Author author = authorService.getById(requestBody.get("id").toString()).orElseThrow(NotFoundException::new);
         bookFromDb.getAuthors().add(author);
         bookService.save(bookFromDb);
         Book bookFromUpdateDb = bookService.findById(bookId).orElseThrow(NotFoundException::new);
-        return bookFromUpdateDb.getBookComments();
+        return bookFromUpdateDb.getAuthors();
     }
 }
