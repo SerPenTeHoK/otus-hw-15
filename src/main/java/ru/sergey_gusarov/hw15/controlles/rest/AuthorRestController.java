@@ -21,7 +21,7 @@ public class AuthorRestController {
         this.authorService = authorService;
     }
 
-    @GetMapping
+    //@GetMapping
     public List<Author> listAuthorPage() {
         List<Author> authors = authorService.findAll();
         return authors;
