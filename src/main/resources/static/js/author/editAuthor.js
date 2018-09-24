@@ -11,7 +11,7 @@ $(document).ready(function() {
         $.ajax({
             type : "PUT",
             contentType : "application/json",
-            url : "/editAuthor",
+            url : "/author",
             data : JSON.stringify(formData),
             dataType : "json",
             success : function(result) {

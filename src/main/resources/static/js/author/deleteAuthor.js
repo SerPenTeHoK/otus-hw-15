@@ -5,7 +5,7 @@
         $.ajax({
             type : "DELETE",
             contentType : "application/json",
-            url : "/deleteAuthor/" + authorId,
+            url : "/author/" + authorId,
             data : JSON.stringify(formData),
             dataType : "json",
             success : function(result) {

@@ -24,6 +24,12 @@ public class BookRestController {
         this.authorService = authorService;
     }
 
+    @GetMapping("/books")
+    public  List<Book> listBookPage() {
+        List<Book> books = bookService.findAll();
+        return books;
+    }
+
     @PostMapping("/addBook")
     public List<Book> addBook(@RequestBody Book book) {
         bookService.save(book);

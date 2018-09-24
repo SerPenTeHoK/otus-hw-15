@@ -9,7 +9,7 @@ $(document).ready(function() {
         }
         $.ajax({
             type : "POST",
-            url : "/addAuthor",
+            url : "/author",
             data : JSON.stringify(formData),
             contentType : "application/json; charset=utf-8",
             dataType : "json",
@@ -20,7 +20,7 @@ $(document).ready(function() {
             },
             error : function(e) {
                 console.log("ERROR: ", e);
-                alert('Duplicate name = ' + $("#name").val());
+                alert('Maybe duplicate name = ' + $("#name").val());
             }
         });
     }

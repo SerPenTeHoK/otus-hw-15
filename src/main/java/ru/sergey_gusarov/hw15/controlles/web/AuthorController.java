@@ -27,20 +27,20 @@ public class AuthorController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/authors")
+    //@GetMapping("/authors")
     public String listAuthorPage(Model model) {
         List<Author> authors = authorService.findAll();
         model.addAttribute("authors", authors);
         return "authors";
     }
 
-    @RequestMapping("/newAuthor")
+    //@RequestMapping("/newAuthor")
     public String newAuthorPage(@ModelAttribute Author author, Model model) {
         authorService.save(author);
         return "authorEdit";
     }
 
-    @RequestMapping("/newAuthorForBook")
+    //@RequestMapping("/newAuthorForBook")
     public String newAuthorFromBookPage(@ModelAttribute Book book, Model model) {
         model.toString();
         book = bookService.findById(book.getId()).get();
@@ -52,7 +52,7 @@ public class AuthorController {
         return "redirect:/newAuthor?id=" + author.getId();
     }
 
-    @RequestMapping("/author")
+    //@RequestMapping("/author")
     public String authorPage(@ModelAttribute Author author, Model model) {
         Author authorFromDb = authorService.getById(author.getId()).orElseThrow(NotFoundException::new);
         model.addAttribute("author", authorFromDb);
@@ -61,7 +61,7 @@ public class AuthorController {
     }
 
 
-    @RequestMapping(value = "/author", method = RequestMethod.POST)
+    //@RequestMapping(value = "/author", method = RequestMethod.POST)
     public String editAuthor(@ModelAttribute Author author, Model model) {
         if (author.getName().isEmpty()) {
             model.addAttribute("errorMessage", errorMessage);
@@ -71,7 +71,7 @@ public class AuthorController {
         return "redirect:/authors";
     }
 
-    @RequestMapping(value = "/deleteAuthor")
+    //@RequestMapping(value = "/deleteAuthor")
     public String deleteAuthor(@ModelAttribute Author author) {
         authorService.deleteById(author.getId());
         return "redirect:/authors";
