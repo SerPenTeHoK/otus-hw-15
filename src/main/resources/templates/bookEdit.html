@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit book</title>
+    <link rel="stylesheet" type="text/css" th:href="style.css"/>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var book = /*[[${book}]]*/ 'default';
+        var genres = /*[[${book.genres}]]*/ 'default';
+        var comments = /*[[${book.bookComments}]]*/ 'default';
+        var authors = /*[[${book.authors}]]*/ 'default';
+        var allAuthors = /*[[${authors}]]*/ 'default';
+        /*]]>*/
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/book/elements/editBook.js"></script>
+    <script src="js/book/elements/genres/deleteGenreFromBook.js"></script>
+    <script src="js/book/elements/genres/genresTable.js"></script>
+    <script src="js/book/elements/genres/addGenres.js"></script>
+    <script src="js/book/elements/comments/deleteCommentFromBook.js"></script>
+    <script src="js/book/elements/comments/commentsTable.js"></script>
+    <script src="js/book/elements/comments/addComment.js"></script>
+    <script src="js/book/elements/authors/deleteAuthorFromBook.js"></script>
+    <script src="js/book/elements/authors/authorsTableForBooks.js"></script>
+    <script src="js/book/elements/authors/addAuthorToBook.js"></script>
+    <script src="js/book/elements/authors/authorSelector.js"></script>
+
+</head>
+<body>
+
+<a href="books">Show list of books</a>
+<!-- Book edition -->
+<form id="editBookForm" >
+    <h1>Book Info:</h1>
+
+    <div class="row">
+        <label for="book-id">ID:</label>
+        <input id="book-id"  name="book-id" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="book-title">Title:</label>
+        <input id="book-title" name="book-title" type="text" th:value="${book.title}" value="Book1"/>
+    </div>
+
+    <div class="row">
+        <button type="submit" value="Edit book" class="editBook">Edit</button>
+    </div>
+</form>
+
+    <h2>Genres</h2>
+    <div id="genresDiv">
+        <fieldset id="genresFieldset">
+            <script>
+                markupGenreTable();
+            </script>
+        </fieldset>
+    </div>
+    <div>
+        <form id="addGenreForm">
+            <p>Genre name: <input type="text" id="name"/></p>
+            <p><input type="submit" value="Add genre"/></p>
+        </form>
+    </div>
+
+    <h2>Authors</h2>
+    <div id="authorsTableDiv">
+        <script>
+            markupAuthorsTableForBook();
+        </script>
+    </div>
+    <div>
+    <form id="addAuthorForm">
+         <legend>Choice author</legend>
+        <div id="comboBoxAuthorDiv">
+            <script>
+                markupAuthorSelectorForBook();
+            </script>
+        </div>
+        <button type="submit" value="Add selected author" class="addAuthorInBook">Add selected author</button>
+    </form>
+    </div>
+
+    <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add new author to all authors list</a>
+
+    <h2>Comments</h2>
+    <div id="commentsDiv">
+        <fieldset id="commentsFieldset">
+            <script>
+                markupCommentTable();
+            </script>
+        </fieldset>
+    </div>
+
+    <div>
+        <form id="addCommentForm">
+            <p>Comment text: <input type="text" id="text"/></p>
+            <p><input type="submit" value="Add comment"/></p>
+        </form>
+    </div>
+
+</body>
+</html>

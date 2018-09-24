@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>List of all books</title>
+    <link rel="stylesheet" type="text/css" th:href="style.css"/>
+
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="js/plugins/table/dataTable/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="js/plugins/table/dataTable/jquery.dataTables.js"></script>
+    <script src="js/author/authorPlugins.js"></script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var books = /*[[${books}]]*/ 'default';
+        /*]]>*/
+    </script>
+    <script src="js/book/booksTable.js"></script>
+    <script src="js/book/addBook.js"></script>
+    <script src="js/book/deleteBook.js"></script>
+</head>
+<body>
+    <h1>Books:</h1>
+    <a href="/">Return to main page</a>
+    <div>
+        <form id="addBookForm">
+            <p>Book title: <input type="text" id="title"/></p>
+            <p><input type="submit" value="Add book"/></p>
+        </form>
+    </div>
+    <div id="booksTableDiv">
+        <script>
+            markupBooksTable();
+        </script>
+    </div>
+</body>
+</html>

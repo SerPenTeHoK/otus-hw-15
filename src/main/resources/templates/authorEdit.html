@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit author</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/author/editAuthor.js"></script>
+
+</head>
+<body>
+
+<a href="authors">Show list of authors</a>
+<!-- Author edition -->
+<form th:object="${author}" id="editAuthorForm">
+    <h1>Author Info:</h1>
+
+    <div class="row">
+        <label for="id">ID:</label>
+        <input id="id" type="text" readonly="readonly" th:value="${author.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="name">Name:</label>
+        <input id="name" type="text" th:field="*{name}"  value="Author1"/>
+    </div>
+
+    <div class="row">
+        <button type="submit" value="Edit author" class="editAuthor">Edit</button>
+    </div>
+</form>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+     style="color:red;font-style:italic;">
+
+</div>
+
+</body>
+</html>
